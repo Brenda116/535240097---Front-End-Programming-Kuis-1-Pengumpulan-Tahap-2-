@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Untuk halaman auth saja agar tidak bertabrakan dengan css halaman lain */
+.auth-page {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.55)
+    ),
+    url("https://plus.unsplash.com/premium_photo-1701795331097-4ddcbccaf325?q=80&w=1032&auto=format&fit=crop")
+    no-repeat center center/cover;
+  color: #2d3436;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-page .auth-warning {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.auth-page .auth-warning h2 {
+  font-size: 24px;
+  color: #111111;
+  margin-bottom: 10px;
+}
+
+.auth-page .auth-warning p {
+  font-size: 17px;
+  color: #636e72;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Button */
+.auth-page .auth-warning a {
+  display: inline-block;
+  margin: 10px 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+/* Login Button */
+.auth-page .auth-warning a[href*="login"] {
+  background: linear-gradient(135deg, #0984e3, #6c5ce7);
+  color: #fff;
+}
+
+.auth-page .auth-warning a[href*="login"]:hover {
+  background: linear-gradient(135deg, #6c5ce7, #0984e3);
+}
+
+/* Signup Button */
+.auth-page .auth-warning a[href*="signup"] {
+  background: #dfe6e9;
+  color: #2d3436;
+}
+
+.auth-page .auth-warning a[href*="signup"]:hover {
+  background: #b2bec3;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

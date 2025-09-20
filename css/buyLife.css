@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #2d3436;
+  background: #f9fafc;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: #fff;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0984e3;
+}
+
+header .logo span {
+  color: #6c5ce7;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #2d3436;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #0984e3;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #0984e3;
+  margin-bottom: 20px;
+}
+
+/* Form Life Insurance */
+form {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+label {
+  font-weight: 600;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #dfe6e9;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* Buttons */
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background: #0984e3;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: 0.2s ease;
+}
+
+button:hover {
+  background: #0652dd;
+}
+
+button.back-btn {
+  background: #b2bec3;
+  margin-top: 10px;
+}
+
+button.back-btn:hover {
+  background: #636e72;
+}
+
+/* Result Card */
+.result-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: 40px auto;
+  max-width: 600px;
+  text-align: center;
+  display: none;
+}
+
+/* Result Button */
+.result-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.result-buttons button {
+  width: auto;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.checkout-btn {
+  background: #0984e3;
+  color: #fff;
+}
+
+.checkout-btn:hover {
+  background: #0652dd;
+}
+
+.back-btn {
+  background: #b2bec3;
+  color: #fff;
+}
+
+.back-btn:hover {
+  background: #636e72;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("https://plus.unsplash.com/premium_photo-1701795331097-4ddcbccaf325?q=80&w=1032&auto=format&fit=crop")
+    no-repeat center center/cover;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px 30px;
+  margin-top: 40px;
+  clip-path: ellipse(100% 80% at 50% 100%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
