@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Car Insurance</title>
+  <link rel="stylesheet" href="css/checkout.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="script/auth.js"></script>
+
+</head>
+<body>
+  <header>
+    <div class="logo">Brenda's Insurance<span>Marketplace</span></div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="home.html#about">About Us</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <a href="#" onclick="logout()" class="logout">Logout</a>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="checkout-card">
+  <h2>Order Summary</h2>
+    <ul id="checkoutInfo"></ul>
+    <h3>Payment Method</h3>
+    <label><input type="radio" name="payment" checked> <i class="fa-solid fa-university"></i> Bank Transfer</label><br>
+    <label><input type="radio" name="payment"> <i class="fa-solid fa-credit-card"></i> Credit Card</label><br>
+    <label><input type="radio" name="payment"> <i class="fa-solid fa-wallet"></i> E-Wallet</label><br><br>
+  </div>
+
+  <div class="checkout-actions">
+    <button type="button" class="confirm-btn" onclick="confirmOrder(true)">Confirm & Finish</button>
+    <button type="button" class="later-btn" onclick="confirmOrder(false)">Pay Later</button>
+    <button onclick="window.location.href='buyCar.html'" class="back-btn">Back To Form</button>
+  </div>
+
+  <!-- Popup -->
+  <div id="successPopup" class="popup">
+  <div class="popup-content">
+    <h3 id="popupTitle"></h3>
+    <p id="popupMessage"></p>
+    <button onclick="closePopup()">OK</button>
+  </div>
+</div>
+
+  <footer>
+    <p>Brenda Anastasya - 535240097 // Kuis Frontend Programming</p>
+  </footer>
+
+  <script>
+    const checkoutInfo = document.getElementById('checkoutInfo');
+    const carData = JSON.parse(localStorage.getItem('carData'));
+    const healthData = JSON.parse(localStorage.getItem('healthData'));
+    const lifeData = JSON.parse(localStorage.getItem('lifeData'));
+
+    let currentData = null;
+
+    // Menampilkan info checkout sesuai jenis asuransi
+    if (carData) {
+      checkoutInfo.innerHTML = `
+        <li><strong>Owner:</strong> ${carData.pemilik}</li>
+        <li><strong>Car:</strong> ${carData.merk} ${carData.jenis} (${carData.tahun})</li>
+        <li><strong>Provider:</strong> ${carData.provider}</li>
+        <li><strong>Premium:</strong> Rp${carData.premi.toLocaleString('id-ID')} / year</li>
+      `;
+      currentData = carData;
+    } else if (healthData) {
+      checkoutInfo.innerHTML = `
+        <li><strong>Owner:</strong> ${healthData.nama}</li>
+        <li><strong>Age:</strong> ${healthData.umur} tahun</li>
+        <li><strong>Provider:</strong> ${healthData.provider}</li>
+        <li><strong>Plan:</strong> ${healthData.plan}</li>
+        <li><strong>Premium:</strong> Rp${healthData.premi.toLocaleString('id-ID')} / year</li>
+      `;
+      currentData = healthData;
+    } else if (lifeData) {
+      checkoutInfo.innerHTML = `
+        <li><strong>Owner:</strong> ${lifeData.nama}</li>
+        <li><strong>Date of Birth:</strong> ${lifeData.tanggalLahir}</li>
+        <li><strong>Provider:</strong> ${lifeData.provider}</li>
+        <li><strong>Coverage Amount:</strong> Rp${parseInt(lifeData.pertanggungan).toLocaleString('id-ID')}</li>
+        <li><strong>Premium:</strong> Rp${lifeData.premi.toLocaleString('id-ID')} / year</li>
+      `;
+      currentData = lifeData;
+    }
+
+  function saveHistory(product, type, amount, status, provider) {
+    const history = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
+
+    const newEntry = {
+      product: product,
+      provider: provider || '-',
+      type: type,
+      date: new Date().toLocaleDateString('id-ID', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+      }),
+      amount: amount,
+      status: status,
+    };
+
+    history.push(newEntry);
+    localStorage.setItem('purchaseHistory', JSON.stringify(history));
+  }
+
+    function confirmOrder(isPaid = true) {
+      const carData = JSON.parse(localStorage.getItem('carData'));
+      const healthData = JSON.parse(localStorage.getItem('healthData'));
+      const lifeData = JSON.parse(localStorage.getItem('lifeData'));
+
+      let currentData = carData || healthData || lifeData;
+
+      if (currentData) {
+        let productName = '';
+        let productType = '';
+
+        if (carData) {
+          productName = 'Car Insurance';
+          productType = `${carData.merk} ${carData.jenis}`;
+          provider = carData.provider;
+        } else if (healthData) {
+          productName = 'Health Insurance';
+          productType = `${healthData.plan} - ${healthData.umur} years`;
+          provider = healthData.provider;
+        } else if (lifeData) {
+          productName = 'Life Insurance';
+          productType = `Coverage Rp${parseInt(lifeData.pertanggungan).toLocaleString('id-ID')}`;
+          provider = lifeData.provider;
+        }
+
+        // Status bayar
+        let status = isPaid ? 'Paid' : 'Unpaid';
+
+        // Data disimpan ke history localStorage
+        saveHistory(productName, productType, currentData.premi, status, provider);
+
+        // Popup
+        // Menampilkan popup sesuai status
+        document.getElementById("popupTitle").textContent = isPaid
+          ? "Your Payment Successful!"
+          : "Order Saved!";
+        document.getElementById("popupMessage").textContent = isPaid
+          ? "Your Insurance Order Has Been Successfully Confirmed!"
+          : "Your Insurance Order is saved, please complete the payment later.";
+
+        document.getElementById("successPopup").style.display = "flex";
+
+        // Hapus data checkout dari localStorage
+        localStorage.removeItem('carData');
+        localStorage.removeItem('healthData');
+        localStorage.removeItem('lifeData');
+      }
+    }
+
+    function closePopup() {
+      document.getElementById("successPopup").style.display = "none";
+      window.location.href = 'product.html';
+    }
+  </script>
+</body>
+</html>

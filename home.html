@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Home Page - Brenda's Insurance Marketplace</title>
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <script src="script/auth.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <div class="logo">Brenda's Insurance<span>Marketplace</span></div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="product.html">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <a href="#" onclick="logout()" class="logout">Logout</a>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Our Insurance Marketplace</h1>
+      <p>Your one-stop platform to explore insurance products from multiple trusted providers.</p>
+      <a href="product.html" class="btn">Explore Services</a>
+    </div>
+  </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-us">
+    <div class="about-card">
+        <img src="https://plus.unsplash.com/premium_photo-1661454104362-996bf5432cc3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="About Us" />
+    </div>
+    <div class="about-text">
+        <h2>About Us</h2>
+        <p>
+        Our Insurance Marketplace is a modern platform designed to make finding, comparing, and purchasing insurance simple and stress-free. We are not an insurance provider ourselves; instead, we connect you with multiple trusted insurance companies in one convenient place. By bringing together a variety of providers, we help you explore options without the need to visit multiple websites or spend hours researching.
+        </p>
+        <p>
+        With just a few clicks, you can browse a wide range of insurance products, including health, life, and vehicle insurance. Each product is presented clearly and transparently, allowing you to compare coverage, benefits, and prices easily. Our platform is designed to provide insights that help you make informed decisions tailored to your personal needs and budget.
+        </p>
+        <p>
+        We prioritize speed, security, and user-friendliness, making insurance accessible to everyone. Whether you are buying insurance for the first time or looking to switch providers, our marketplace saves you time and effort while giving you confidence in your choices. By centralizing multiple options in one place, we make it easier than ever to find the right insurance for your lifestyle and protect what matters most.
+        </p>
+    </div>
+    </section>
+
+    <!-- Why Choose Us Section-->
+    <section class="why-us" id="services">
+      <h2>Why Choose Us?</h2>
+      <div class="features">
+        <div class="feature">
+          <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="Insurance">
+          <p>Access diverse insurance products from multiple providers in one place.</p>
+        </div>
+        <div class="feature">
+          <img src="https://cdn-icons-png.flaticon.com/512/609/609361.png" alt="Digital">
+          <p>Enjoy a seamless and digital-friendly browsing experience.</p>
+        </div>
+        <div class="feature">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Insights">
+          <p>Compare products easily to make informed decisions for your needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonials">
+      <h2>What Our Users Say</h2>
+      <div class="testimonial-container">
+
+        <div class="testimonial-card">
+          <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Client 1">
+          <div class="testimonial-text">
+            <p>"This marketplace made it easy for me to compare different insurance products. The information is clear, and I can make choices without feeling overwhelmed."</p>
+            <h4>Michael Lee</h4>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <img src="https://images.unsplash.com/photo-1554727242-741c14fa561c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Client 2">
+          <div class="testimonial-text">
+            <p>"The platform is user-friendly and transparent. I feel confident choosing the right insurance because I can make informed decisions."</p>
+            <h4>Sarah Johnson</h4>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=388&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Client 3">
+          <div class="testimonial-text">
+            <p>"I can quickly compare insurance policies without visiting multiple websites. It saves me time and makes the whole process more convenient."</p>
+            <h4>Emily Davis</h4>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p class="subtitle">We’d love to hear from you!</p>
+        <div class="contact-content">
+
+          <div class="contact-details">
+            <!-- Contact Info -->
+            <div class="contact-info">
+              <p><strong>Email:</strong> brenda.insurance@market.com</p>
+              <p><strong>Phone:</strong> +62 812 3456 7890</p>
+              <p><strong>Location:</strong> Jakarta, Indonesia</p>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="social-icons">
+              <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.linkedin.com"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Brenda Anastasya - 535240097 // Kuis Frontend Programming</p>
+  </footer>
+  
+</body>
+</html>

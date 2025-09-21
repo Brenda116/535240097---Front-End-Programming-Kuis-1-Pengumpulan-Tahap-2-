@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Now - Life Insurance</title>
+  <link rel="stylesheet" href="css/buyLife.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Brenda's Insurance<span>Marketplace</span></div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="lifeDetail.html">Life Details</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Form -->
+  <h1>Life Insurance Purchase Form</h1>
+  <form id="lifeForm">
+    <label>Full Name (as in ID)</label>
+    <input type="text" id="nama" required pattern="[A-Za-z ]+" placeholder="e.g. Brenda Anastasya">
+
+    <label>Date of Birth</label>
+    <input type="date" id="tanggalLahir" required>
+
+    <label>Coverage Amount</label>
+    <select id="pertanggungan" required>
+      <option value="">-- Select --</option>
+      <option value="1000000000">Rp1.000.000.000</option>
+      <option value="2000000000">Rp2.000.000.000</option>
+      <option value="3500000000">Rp3.500.000.000</option>
+      <option value="5000000000">Rp5.000.000.000</option>
+      <option value="10000000000">Rp10.000.000.000</option>
+    </select>
+
+    <button type="submit">Calculate Premium</button>
+  </form>
+
+  <!-- Result -->
+  <div id="result" class="result-card">
+    <h2>Premium Calculation Result</h2>
+    <p id="premiText"></p>
+    <div class="result-buttons">
+      <button id="proceedBtn" class="checkout-btn">Proceed to Checkout</button>
+      <button onclick="window.location.href='lifeDetail.html'" class="back-btn">Back to Detail</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>Brenda Anastasya - 535240097 // Kuis Frontend Programming</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('lifeForm');
+    const resultDiv = document.getElementById('result');
+    const premiText = document.getElementById('premiText');
+    const proceedBtn = document.getElementById('proceedBtn');
+
+    let premi = 0;
+    let lifeData = {};
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nama = document.getElementById('nama').value;
+      const tanggalLahir = document.getElementById('tanggalLahir').value;
+      const pertanggungan = parseInt(document.getElementById('pertanggungan').value);
+
+      // Hitung umur
+      const today = new Date();
+      const dob = new Date(tanggalLahir);
+      let umur = today.getFullYear() - dob.getFullYear();
+      const mth = today.getMonth() - dob.getMonth();
+      if (mth < 0 || (mth === 0 && today.getDate() < dob.getDate())) {
+        umur--;
+      }
+
+      // Tentukan tarif premi m
+      let m = 0;
+      if (umur <= 30) m = 0.002;
+      else if (umur <= 50) m = 0.004;
+      else m = 0.01;
+
+      // Hitung premi bulanan
+      premi = m * pertanggungan;
+
+      premiText.textContent = `Your Life Insurance Premium: Rp${premi.toLocaleString('id-ID')}/month`;
+      resultDiv.style.display = 'block';
+
+      // Simpan ke localStorage untuk digunakan di checkout
+      const provider = 'GHI Life Insurance Co.';
+      lifeData = { nama, tanggalLahir, umur, pertanggungan, plan: "Life Insurance", premi, provider };
+      localStorage.setItem("lifeData", JSON.stringify(lifeData));
+    });
+
+    proceedBtn.addEventListener('click', () => {
+      window.location.href = 'checkout.html';
+    });
+  </script>
+  
+</body>
+</html>
