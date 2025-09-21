@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f9fafc;
+  color: #2d3436;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: #fff;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header .logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0984e3;
+}
+
+header .logo span {
+  color: #6c5ce7;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #2d3436;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #0984e3;
+}
+
+h1 {
+  text-align: center;
+  color: #0984e3;
+  margin: 30px 0;
+}
+
+/* Order History Table */
+.history-table {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto 50px;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.history-table th,
+.history-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.history-table th {
+  background: #0984e3;
+  color: #fff;
+  font-weight: 600;
+}
+
+.history-table tr:nth-child(even) {
+  background: #f1f3f6;
+}
+
+.history-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Delete Button */
+button.back-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 12px 25px;
+  background: #b2bec3;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s ease;
+}
+
+button.back-btn:hover {
+  background: #636e72;
+}
+
+button.delete-btn {
+  display: block;
+  margin: 10px auto;
+  padding: 12px 25px;
+  background: #d63031;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s ease;
+}
+
+button.delete-btn:hover {
+  background: #b71c1c;
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("https://plus.unsplash.com/premium_photo-1701795331097-4ddcbccaf325?q=80&w=1032&auto=format&fit=crop")
+    no-repeat center center/cover;
+  color: #fff;
+  text-align: center;
+  padding: 60px 20px 30px;
+  margin-top: 40px;
+  clip-path: ellipse(100% 80% at 50% 100%);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .history-table th,
+  .history-table td {
+    padding: 8px 10px;
+  }
+}
